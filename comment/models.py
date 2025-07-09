@@ -4,7 +4,7 @@ from photo.models import Photo
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     img = models.ForeignKey(Photo, on_delete=models.CASCADE, related_name='comments')
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
