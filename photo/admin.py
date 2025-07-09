@@ -3,7 +3,7 @@ from . import models
 
 
 class PhotoAdmin(admin.ModelAdmin):
-    list_display = ('user', 'name', 'img',)
+    list_display = ('user', 'name', 'img', 'accesses',)
     search_fields = ('user', 'name',)
 
 

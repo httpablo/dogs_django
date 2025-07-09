@@ -11,4 +11,4 @@ class Comment(models.Model):
     update_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'Comment by {self.author.username} on {self.photo.nome}'
+        return f'{self.user.username} - {self.img.id}'
