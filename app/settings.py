@@ -133,6 +133,8 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ),
+    'DEFAULT_PAGINATION_CLASS': 'photo.pagination.CustomPageNumberPagination',
+    'PAGE_SIZE': 6
 }
 
 SIMPLE_JWT = {
