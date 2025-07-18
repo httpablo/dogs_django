@@ -5,6 +5,7 @@ from comment.models import Comment
 
 class CommentInline(admin.TabularInline):
     model = Comment
+    autocomplete_fields = ("user", )
     extra = 0
 
 

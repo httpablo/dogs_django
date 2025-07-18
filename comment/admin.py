@@ -3,7 +3,7 @@ from . import models
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'img', 'comment',)
+    list_display = ('id', 'user', 'photo', 'comment',)
     search_fields = ('user', 'comment',)
 
 

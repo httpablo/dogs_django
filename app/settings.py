@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
 
+    'authentication',
     'photo',
     'comment',
 ]
@@ -134,7 +135,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ),
     'DEFAULT_PAGINATION_CLASS': 'photo.pagination.CustomPageNumberPagination',
-    'PAGE_SIZE': 6
+    'PAGE_SIZE': 15
 }
 
 SIMPLE_JWT = {
