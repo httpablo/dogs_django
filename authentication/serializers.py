@@ -10,6 +10,13 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class UserCreateSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(
+        required=True,
+        validators=[UniqueValidator(
+            queryset=User.objects.all(),
+            message="Este nome de usuário já existe."
+        )]
+    )
     email = serializers.EmailField(
         required=True,
         validators=[UniqueValidator(

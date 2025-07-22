@@ -7,17 +7,11 @@ class PhotoCreateListAPIView(generics.ListCreateAPIView):
     serializer_class = serializers.PhotoSerializer
 
     def get_queryset(self):
-        """
-        Sobrescreve o queryset para filtrar as fotos por usuário,
-        se o parâmetro 'user' for passado na URL.
-        """
         queryset = super().get_queryset()
+        user_param = self.request.query_params.get('user')
 
-        user_id = self.request.query_params.get('user')
-
-        if user_id:
-            queryset = queryset.filter(user__id=user_id)
-
+        if user_param and user_param != '0':
+            queryset = queryset.filter(user__username=user_param)
         return queryset
 
     def perform_create(self, serializer):
