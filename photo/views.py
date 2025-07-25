@@ -1,5 +1,8 @@
 from rest_framework import generics
 from . import models, serializers, permissions
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.db.models import F
 
 
 class PhotoCreateListAPIView(generics.ListCreateAPIView):
@@ -22,3 +25,20 @@ class PhotoRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Photo.objects.all()
     serializer_class = serializers.PhotoSerializer
     permission_classes = [permissions.IsOwnerOrReadOnly]
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        instance.accesses = F('accesses') + 1
+        instance.save(update_fields=['accesses'])
+        instance.refresh_from_db()
+
+        return super().retrieve(request, *args, **kwargs)
+
+
+class UserStatsAPIView(APIView):
+    def get(self, request):
+        user = request.user
+        photos = models.Photo.objects.filter(user=user)
+        serializer = serializers.PhotoSerializer(photos, many=True)
+
+        return Response(serializer.data)
