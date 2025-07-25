@@ -1,0 +1,18 @@
+from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+
+    path('api/v1/', include('authentication.urls')),
+    path('api/v1/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
+
+
+    path('api/v1/', include('photo.urls')),
+    path('api/v1/', include('comment.urls')),
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
