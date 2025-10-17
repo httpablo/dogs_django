@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
 
-    'django_rest_passwordreset',
+    # 'django_rest_passwordreset',
 
     'authentication',
     'photo',

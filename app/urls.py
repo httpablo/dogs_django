@@ -7,7 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('api/v1/', include('authentication.urls')),
-    path('api/v1/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
+    # path('api/v1/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
 
 
     path('api/v1/', include('photo.urls')),
